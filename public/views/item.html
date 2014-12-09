@@ -1,0 +1,32 @@
+<!-- public/views/item.html -->
+
+<div class="panel content large-5 medium-8 small-12 small-centered large-centered radius">
+  <h1>All Items:</h1>
+  <p>{{ tagline }}</p>
+
+  <table>
+    <th width="220">Name</th>
+    <th width="130">Modify</th>
+    <tr ng-repeat="item in items">
+      <td>{{item.name}}</td>
+      <td><a href="" ng-click="remove(item._id)">Remove</a></td>
+    </tr>
+  </table>
+  <br>
+  Add a new one:<br>
+  <div class="row">
+    <div class="large-10 columns">
+      <div class="row collapse">
+        <div class="small-10 medium-8 large-8 columns">
+          <input type="text" placeholder="New item" ng-model="newOne">
+        </div>
+        <div class="small-2 medium-4 large-4 columns">
+          <a ng-click="addOne(newOne)"class="button postfix">Add</a>
+        </div>
+      </div>
+    </div>
+  </div>  
+<!--   <input type="text" ng-model="newOne"/>
+  <button class="button tiny radius" ng-click="addOne(newOne)">Add</button>
+ -->
+</div>

@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 console.log (' Connecting....');   // Make sure database is created and 
                                   // mongo db is running in a terminal: mongod
-mongoose.connect('mongodb://localhost/sample-dev');
+mongoose.connect('mongodb://localhost/task-list-2d');  // NOTE:  may create if does not exist.
 
 // define our item model
 // module.exports allows us to pass this to other files when it is called

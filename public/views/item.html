@@ -5,15 +5,17 @@
   <p>{{ tagline }}</p>
 
   <table>
-    <th width="220">Name</th>
-    <th width="130">Modify</th>
+    <th width="320">Task</th>
+    <th width="80">Add</th>
+    <th width="80">Remove</th>
     <tr ng-repeat="item in items">
       <td>{{item.name}}</td>
+      <td><a href="" ng-click="add(item._id)">Add</a></td>
       <td><a href="" ng-click="remove(item._id)">Remove</a></td>
     </tr>
   </table>
   <br>
-  Add a new one:<br>
+  Add a new row:<br>
   <div class="row">
     <div class="large-10 columns">
       <div class="row collapse">

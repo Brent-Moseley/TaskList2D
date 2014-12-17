@@ -44,6 +44,19 @@ var Item = require('./models/item');
           })
         });        
 
+        // route to handle update
+        app.update('/api/items/:id', function(req, res) {
+          console.log (' in update' + req.params.id);
+          console.log (req.params.data);
+          console.log (req.params.id.substring(4));
+          // id value will come in this format: "&id=5474bd2f118b2d00008b1ab8"
+          Item.findById(req.params.id.substring(4)).update(req.params.data, function (err, rowsAffected) {
+            console.log ('Returned from update, rows affected:' + rowsAffected);
+            if (err) { console.error(err); res.send('Unable to Update'); }
+            else { console.log ('successful update'); res.send('/ UPDATE OK'); }
+          })
+        }); 
+
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('*', function(req, res) {

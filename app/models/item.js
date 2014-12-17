@@ -3,12 +3,15 @@
 var mongoose = require('mongoose');
 console.log (' Connecting....');   // Make sure database is created and 
                                   // mongo db is running in a terminal: mongod
-mongoose.connect('mongodb://localhost/task-list-2d');  // NOTE:  may create if does not exist.
+mongoose.connect('mongodb://localhost/task-list-2d');  // NOTE:  may create for you if does not exist.
 
 // define our item model
 // module.exports allows us to pass this to other files when it is called
 module.exports = mongoose.model('Item', {
-    name : {type : String, default: ''}
+      name : {type : String, default: ''},
+      size : {type : String, default: ''},
+      status : {type : String, default: ''},
+      note : {type : String, default: ''}
     },
     'testData');    // testData is the collection name
     // Doc on creating a DB and collection:

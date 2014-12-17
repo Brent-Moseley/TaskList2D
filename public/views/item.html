@@ -1,17 +1,36 @@
 <!-- public/views/item.html -->
 
-<div class="panel content large-5 medium-8 small-12 small-centered large-centered radius">
+<div class="panel content large-8 medium-10 small-12 small-centered large-centered radius" 
+     style="padding: 0.75rem;">
   <h1>All Items:</h1>
   <p>{{ tagline }}</p>
 
+  <!-- {{items}} -->
   <table>
     <th width="320">Task</th>
-    <th width="80">Add</th>
-    <th width="80">Remove</th>
+    <th width="100">Size</th>   <!--  Stone / Rock / Sand -->
+    <th width="100">Status</th>   <!-- Open / Started / Done -->
+    <th width="50">Notes</th>
+    <th width="50">Remove</th>
     <tr ng-repeat="item in items">
       <td>{{item.name}}</td>
-      <td><a href="" ng-click="add(item._id)">Add</a></td>
-      <td><a href="" ng-click="remove(item._id)">Remove</a></td>
+      <td>
+        <select ng-model="item.size" ng-change="update(item._id, item)">
+          <option>Stone</option>
+          <option>Rock</option>
+          <option>Sand</option>
+        </select>
+      </td>
+      <td>
+        <select ng-model="item.status" ng-change="update(item._id, item)">
+          <option>Open</option>
+          <option>Started</option>
+          <option>Done</option>
+        </select>
+      </td>      
+      <td class="text-center" ng-if="item.note"><a href="" ng-click="viewNote(item._id)">View</a></td>
+      <td class="text-center" ng-if="!item.note"><a href="" ng-click="addNote(item._id)">Add</a></td>
+      <td class="text-center"><a href="" ng-click="remove(item._id)">X</a></td>
     </tr>
   </table>
   <br>
@@ -31,4 +50,5 @@
 <!--   <input type="text" ng-model="newOne"/>
   <button class="button tiny radius" ng-click="addOne(newOne)">Add</button>
  -->
+  <note-popup></note-popup>
 </div>

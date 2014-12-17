@@ -29,6 +29,15 @@ app.controller('ItemController', function($scope, itemService) {
       });
   }
 
+  $scope.update = function (id, data) {
+    console.log ('request to update: ' + id);
+    console.log (data);
+    itemService.update (id, data)
+      .then(function(data) {
+        console.log ('Update completed');
+      });
+  }
+
   $scope.getAll();  // Show items when viewing first time
 
 });

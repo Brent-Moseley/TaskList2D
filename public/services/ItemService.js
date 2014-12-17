@@ -29,6 +29,25 @@ app.factory('itemService', ['$http', function($http, $q) {
           return $http.post('/api/items', data);
         },
 
+        // call to UPDATE an item
+        update : function(id, data) {
+          console.log (' in service update:');
+          console.log (data);
+          //return $http.update('/api/items/&id=' + id);
+         $http({
+           url: '/api/items/&id=' + id,
+           method: "PUT",
+           data: {
+              'data': data
+           },
+           headers: {'Content-Type':'application/json'}
+         }).success(function (data, status, headers, config) {
+           console.log(data);
+         }).error(function (data, status, headers, config) {
+           console.log('Update failed');
+         });            
+        },        
+
         // call to DELETE an item
         delete : function(id) {
           console.log (' in service delete');

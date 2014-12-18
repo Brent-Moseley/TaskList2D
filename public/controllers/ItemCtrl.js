@@ -7,7 +7,24 @@ app.controller('ItemController', function($scope, itemService) {
     itemService.get()
       .then(function(data) {
           // promise fulfilled
-          if (data) $scope.items = data;
+          if (data) {
+            var sorted = [];
+            angular.forEach (data, function (d) {
+              if (d.size == 'Rock') sorted.push(d);
+            });
+            angular.forEach (data, function (d) {
+              if (d.size == 'Pebble') sorted.push(d);
+            });
+            angular.forEach (data, function (d) {
+              if (d.size == 'Sand') sorted.push(d);
+            });
+            angular.forEach (data, function (d) {
+              if (d.size == '') sorted.push(d);
+            });                                    
+            $scope.items = sorted;
+            console.log ('data read:');
+            console.log (data);
+          }
           $scope.newOne = '';
       });
       // Add some error handling here.
@@ -32,7 +49,7 @@ app.controller('ItemController', function($scope, itemService) {
   $scope.update = function (id, data) {
     console.log ('request to update: ' + id);
     console.log (data);
-    itemService.update (id, data)
+    itemService.update (id, angular.copy(data))
       .then(function(data) {
         console.log ('Update completed');
       });

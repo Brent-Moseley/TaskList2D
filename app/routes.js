@@ -13,7 +13,7 @@ var Item = require('./models/item');
         app.get('/api/items', function(req, res) {
           // use mongoose to get all items in the database
           console.log ('Request for all items');
-          Item.find(function(err, items) {
+          Item.find().sort('size').exec(function(err, items) {
             // if there is an error retrieving, send the error. 
                             // nothing after res.send(err) will execute
             if (err)
@@ -21,10 +21,11 @@ var Item = require('./models/item');
 
             res.json(items); // return all items in JSON format
           });
+          // http://mongoosejs.com/docs/queries.html
         });
 
         // route to handle creating goes here (app.post)
-        app.post('/api/items', function(req, res) {
+        app.post('/api/items', function(req, res) {    // note post vs create
           var next = new Item(req.body);
           console.log ('create new:');
           next.save(function (err) {
@@ -45,16 +46,21 @@ var Item = require('./models/item');
         });        
 
         // route to handle update
-        app.update('/api/items/:id', function(req, res) {
+        app.put('/api/items/:id', function(req, res) {    // Note this is put, not update
           console.log (' in update' + req.params.id);
-          console.log (req.params.data);
+          console.log (req.body.data);
           console.log (req.params.id.substring(4));
           // id value will come in this format: "&id=5474bd2f118b2d00008b1ab8"
-          Item.findById(req.params.id.substring(4)).update(req.params.data, function (err, rowsAffected) {
-            console.log ('Returned from update, rows affected:' + rowsAffected);
+          //Item.findById(req.params.id.substring(4)).update(req.params.data, function (err, rowsAffected) {
+          var conditions = { '_id': req.params.id.substring(4)};
+          console.log ('conditions:');
+          console.log (conditions);
+          Item.update(conditions, req.body.data, function (err, rowsAffected) {
+            console.log ('Returned from update, rows affected: ' + rowsAffected);
+            console.log ('err: ' + err);
             if (err) { console.error(err); res.send('Unable to Update'); }
             else { console.log ('successful update'); res.send('/ UPDATE OK'); }
-          })
+          });
         }); 
 
         // frontend routes =========================================================

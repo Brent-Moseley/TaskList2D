@@ -32,20 +32,24 @@ app.factory('itemService', ['$http', function($http, $q) {
         // call to UPDATE an item
         update : function(id, data) {
           console.log (' in service update:');
+          //debugger;
+          delete data['_id'];
+          delete data['__v'];
+          delete data['$$hashKey'];
           console.log (data);
           //return $http.update('/api/items/&id=' + id);
-         $http({
-           url: '/api/items/&id=' + id,
-           method: "PUT",
-           data: {
+          return $http({
+            url: '/api/items/&id=' + id,
+            method: "PUT",
+            data: {
               'data': data
-           },
-           headers: {'Content-Type':'application/json'}
-         }).success(function (data, status, headers, config) {
-           console.log(data);
-         }).error(function (data, status, headers, config) {
-           console.log('Update failed');
-         });            
+            },
+            headers: {'Content-Type':'application/json'}
+          }).success(function (data, status, headers, config) {
+            console.log(data);
+          }).error(function (data, status, headers, config) {
+            console.log('Update failed');
+          });            
         },        
 
         // call to DELETE an item

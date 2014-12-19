@@ -11,8 +11,13 @@ module.exports = mongoose.model('Item', {
       name : {type : String, default: ''},
       size : {type : String, default: ''},
       status : {type : String, default: ''},
-      note : {type : String, default: ''}
+      notes : [{
+      	text: {type : String, default: ''}
+      }]
     },
     'testData');    // testData is the collection name
     // Doc on creating a DB and collection:
     // http://docs.mongodb.org/manual/tutorial/getting-started/
+    // http://stackoverflow.com/questions/11117854/many-to-many-mapping-with-mongoose
+    // http://thecodebarbarian.wordpress.com/2013/06/06/61/
+    // 

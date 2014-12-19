@@ -8,20 +8,13 @@ app.controller('ItemController', function($scope, itemService) {
       .then(function(data) {
           // promise fulfilled
           if (data) {
-            var sorted = [];
-            angular.forEach (data, function (d) {
-              if (d.size == 'Rock') sorted.push(d);
-            });
-            angular.forEach (data, function (d) {
-              if (d.size == 'Pebble') sorted.push(d);
-            });
-            angular.forEach (data, function (d) {
-              if (d.size == 'Sand') sorted.push(d);
-            });
-            angular.forEach (data, function (d) {
-              if (d.size == '') sorted.push(d);
-            });                                    
-            $scope.items = sorted;
+            var rocks = _.where(data, {size: 'Rock'});
+            var pebbles = _.where(data, {size: 'Pebble'});
+            var sand = _.where(data, {size: 'Sand'});
+            var none = _.where(data, {size: ''}); 
+            var arranged = rocks.concat(pebbles, sand, none);   
+
+            $scope.items = arranged;
             console.log ('data read:');
             console.log (data);
           }

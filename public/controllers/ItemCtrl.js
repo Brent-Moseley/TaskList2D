@@ -48,6 +48,10 @@ app.controller('ItemController', function($scope, itemService) {
       });
   }
 
+  $scope.viewNotes = function (itemID) {
+    $('#modalNotes').foundation('reveal', 'open');
+  }
+
   $scope.getAll();  // Show items when viewing first time
 
 });

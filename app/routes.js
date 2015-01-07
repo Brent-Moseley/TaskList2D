@@ -27,7 +27,13 @@ var Item = require('./models/item');
         // route to handle creating goes here (app.post)
         app.post('/api/items', function(req, res) {    // note post vs create
           var next = new Item(req.body);
+
+          next.notes.push({text : 'Test 1'});
+          next.notes.push({text : 'Test 2'});
+
           console.log ('create new:');
+          console.log ('notes is:');
+          console.log (next.notes);
           next.save(function (err) {
             if (err) { console.error(err); res.send('ERROR posting'); }
             else { console.log ('Successful add'); res.send('/ POST OK'); }

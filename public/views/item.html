@@ -28,8 +28,8 @@
           <option>Done</option>
         </select>
       </td>      
-      <td class="text-center" ng-if="item.note"><a href="" ng-click="viewNote(item._id)">View</a></td>
-      <td class="text-center" ng-if="!item.note"><a href="" ng-click="addNote(item._id)">Add</a></td>
+      <td class="text-center" ng-if="item.notes.length > 0"><a href="" ng-click="viewNotes(item._id)">View</a></td>
+      <td class="text-center" ng-if="item.notes.length == 0"><a href="" ng-click="viewNotes(item._id)">Add</a></td>
       <td class="text-center"><a href="" ng-click="remove(item._id)">X</a></td>
     </tr>
   </table>

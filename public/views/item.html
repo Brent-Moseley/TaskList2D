@@ -28,8 +28,8 @@
           <option>Done</option>
         </select>
       </td>      
-      <td class="text-center" ng-if="item.notes.length > 0"><a href="" ng-click="viewNotes(item._id)">View</a></td>
-      <td class="text-center" ng-if="item.notes.length == 0"><a href="" ng-click="viewNotes(item._id)">Add</a></td>
+      <td class="text-center" ng-if="item.notes.length > 0"><a href="" ng-click="viewNotes(item.name, item.notes)">View</a></td>
+      <td class="text-center" ng-if="item.notes.length == 0"><a href="" ng-click="viewNotes(item.name, item.notes)">Add</a></td>
       <td class="text-center"><a href="" ng-click="remove(item._id)">X</a></td>
     </tr>
   </table>
@@ -47,8 +47,5 @@
       </div>
     </div>
   </div>  
-<!--   <input type="text" ng-model="newOne"/>
-  <button class="button tiny radius" ng-click="addOne(newOne)">Add</button>
- -->
   <note-popup></note-popup>
 </div>

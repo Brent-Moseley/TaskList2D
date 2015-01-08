@@ -48,7 +48,11 @@ app.controller('ItemController', function($scope, itemService) {
       });
   }
 
-  $scope.viewNotes = function (itemID) {
+  $scope.currentNotes = [];
+  $scope.currentName = '';
+  $scope.viewNotes = function (name, notes) {
+    $scope.currentNotes = notes;
+    $scope.currentName = name;
     $('#modalNotes').foundation('reveal', 'open');
   }
 

@@ -18,6 +18,7 @@ module.exports = mongoose.model('Item', {
       notes : [NoteSchema]
     },
     'testData');    // testData is the collection name
+
     // Doc on creating a DB and collection:
     // http://docs.mongodb.org/manual/tutorial/getting-started/
     // http://stackoverflow.com/questions/11117854/many-to-many-mapping-with-mongoose

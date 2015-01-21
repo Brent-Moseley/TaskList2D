@@ -28,8 +28,8 @@ var Item = require('./models/item');
         app.post('/api/items', function(req, res) {    // note post vs create
           var next = new Item(req.body);
 
-          next.notes.push({text : 'Test 1'});
-          next.notes.push({text : 'Test 2'});
+          next.notes.push({text : 'Test A'});
+          next.notes.push({text : 'Test B'});
 
           console.log ('create new:');
           console.log ('notes is:');

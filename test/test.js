@@ -48,7 +48,12 @@ describe('User', function(){
 })
 
 
+// UI testing:  need Karma, AngularMocks, Sinon, maybe Protractor and Chai as Promised
+// http://angular.github.io/protractor/#/tutorial
+// npm install protractor 
+// npm install -g protractor
+// webdriver-manager start
 
-// Angular testing:   https://quickleft.com/blog/angularjs-unit-testing-for-real-though/
+// Angular testing:   https://quickleft.com/blog/angularjs-unit-testing-for-real-though/     *****
 //   http://stackoverflow.com/questions/19298118/what-is-the-role-of-describe-in-mocha
 //   http://chaijs.com/guide/styles/#expect

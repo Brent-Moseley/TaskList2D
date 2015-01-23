@@ -1,3 +1,5 @@
+// Run this file from the test folder:   mocha test.js
+
 var assert = require("assert");
 var expect = require('chai').expect;
 var assert = require('chai').assert;
@@ -48,14 +50,5 @@ describe('User', function(){
 })
 
 
-// UI testing:  need Karma, AngularMocks, Sinon, maybe Protractor and Chai as Promised
-// http://angular.github.io/protractor/#/tutorial
-// npm install protractor 
-// npm install -g protractor     May have to be run on every machine
-// protractor --version
-// webdriver-manager start
-// webdriver-manager update
-
-// Angular testing:   https://quickleft.com/blog/angularjs-unit-testing-for-real-though/     *****
 //   http://stackoverflow.com/questions/19298118/what-is-the-role-of-describe-in-mocha
 //   http://chaijs.com/guide/styles/#expect

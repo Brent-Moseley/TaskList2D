@@ -1,15 +1,19 @@
 // test/test-helper.js
 
 // Load in our actual project
-require('widgetProject');
+//require('../public/controllers/ItemCtrl');
+// Unnecessary since page is running locally at 8080
 
 // Dependencies
-require('angular-mocks');
+
 var chai = require('chai');
-chai.use('sinon-chai');
-chai.use('chai-as-promised');
+var chaiAsPromised = require('chai-as-promised');
+//chai.use('sinon-chai');
+chai.use(chaiAsPromised);
 
 var sinon = require('sinon');
+
+//require('angular-mocks');    //Get working later
 
 beforeEach(function() {
   // Create a new sandbox before each test
@@ -22,6 +26,6 @@ afterEach(function() {
 });
 
 module.exports = {
-  rootUrl: 'http://localhost:8080',
+  rootUrl: 'http://localhost:8080/#',
   expect: chai.expect
-}
+};

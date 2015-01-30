@@ -52,3 +52,38 @@ describe('User', function(){
 
 //   http://stackoverflow.com/questions/19298118/what-is-the-role-of-describe-in-mocha
 //   http://chaijs.com/guide/styles/#expect
+
+//  New development mindset.  Mindset is key for our kind of work:
+//    Think and imagine more of what I want to do, imagine, create, do.  
+//    Visualize awesome past accomplishments and creations, play with it, 
+//    then start on something new!  Try to get stuff completed.
+
+// Create
+// make
+// craft
+// produce
+// build
+// invent
+// design
+// imagine
+// conceive
+// innovate
+// start
+// get going
+// update
+// renew
+// remodel
+// refresh
+// solve
+// software detective
+// kung fu engineer
+// fix
+// brilliant
+// intelligent
+// clever
+// organized
+// absorb
+// understanding
+// attitude
+// leadership
+

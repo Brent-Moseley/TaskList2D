@@ -21,10 +21,12 @@ app.factory('itemService', ['$http', function($http, $q) {
         },
 
 
-        // these will work when more API routes are defined on the Node side of things
         // call to POST and create a new item
         create : function(itemData) {
           console.log ('in create');
+          // Note this is only creating a new item (line) which
+          //  will then be updated in real time when the user changes
+          //  drop down options, adds a note, etc. 
           var data = JSON.stringify ({name: itemData});
           return $http.post('/api/items', data);
         },
@@ -32,9 +34,11 @@ app.factory('itemService', ['$http', function($http, $q) {
         // call to UPDATE an item
         update : function(id, data) {
           console.log (' in service update:');
-          //debugger;
-          delete data['_id'];
-          delete data['__v'];
+          // the data that comes in is a modification of the original
+          // item object that was loaded.  Delete what should not be sent
+          // to the back end. 
+          delete data['_id']; 
+          delete data['__v'];   // This is like row version
           delete data['$$hashKey'];
           console.log (data);
           //return $http.update('/api/items/&id=' + id);
@@ -46,9 +50,19 @@ app.factory('itemService', ['$http', function($http, $q) {
             },
             headers: {'Content-Type':'application/json'}
           }).success(function (data, status, headers, config) {
+            console.log ('Successful Update:');
+            console.log ('  Data:');
             console.log(data);
+            console.log ('  Status:');
+            console.log(status);
+            console.log ('  Headers:');
+            console.log(headers);
           }).error(function (data, status, headers, config) {
             console.log('Update failed');
+            console.log ('  Status:');
+            console.log(status);
+            console.log ('  Headers:');
+            console.log(headers);            
           });            
         },        
 

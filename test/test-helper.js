@@ -13,7 +13,7 @@ chai.use(chaiAsPromised);
 
 var sinon = require('sinon');
 
-//require('angular-mocks');    //Get working later
+//require('angular-mocks');    //Get working later, mock out services
 
 beforeEach(function() {
   // Create a new sandbox before each test

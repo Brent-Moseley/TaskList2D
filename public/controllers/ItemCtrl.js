@@ -19,6 +19,9 @@ app.controller('ItemController', function($scope, itemService) {
             console.log (data);
           }
           $scope.newOne = '';
+      }, function(err) {
+        console.log (' Error in get All');
+        console.log(err); // Error: "It broke"
       });
       // Add some error handling here.
   }
@@ -28,6 +31,9 @@ app.controller('ItemController', function($scope, itemService) {
     itemService.create (newOne)
       .then(function(data) {
         $scope.getAll();
+      }, function(err) {
+        console.log (' Error in add One');
+        console.log(err); // Error: "It broke"
       });
   }
 
@@ -36,6 +42,9 @@ app.controller('ItemController', function($scope, itemService) {
     itemService.delete (id)
       .then(function(data) {
         $scope.getAll();
+      }, function(err) {
+        console.log (' Error in remove');
+        console.log(err); // Error: "It broke"
       });
   }
 
@@ -45,6 +54,9 @@ app.controller('ItemController', function($scope, itemService) {
     itemService.update (id, angular.copy(data))
       .then(function(data) {
         console.log ('Update completed');
+      }, function(err) {
+        console.log (' Error in update');
+        console.log(err); // Error: "It broke"
       });
   }
 

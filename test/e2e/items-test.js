@@ -1,4 +1,5 @@
 // e2e/items-test.js
+//  First make sure Selenium web driver is started:  webdriver-manager start
 // To run this test, go to the TaskList2D/test/e2e folder and then run: protractor conf.js 
 
 var helpers = require('../test-helper');
@@ -7,6 +8,7 @@ var ItemsPage = require('./pages/items-page');
 
 describe('creating items', function() {
   beforeEach(function() {
+    // this creates a test "page" with just the elements we want to test.
     this.page = new ItemsPage();
     this.page.get();
   });
@@ -25,6 +27,7 @@ describe('creating items', function() {
 
   it('should remove the new item', function() {
     // Still contains the added row, and contains a remove button
+    // Not sure if we have to do eventually on this next one, or if it always begins as true
     expect(this.page.lastItem.getText()).to.eventually.contain('Tester Adding');
     expect(this.page.lastCol.getText()).to.eventually.contain('X');
     expect(this.page.lastCol.click());

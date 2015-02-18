@@ -7,7 +7,7 @@
 // Dependencies
 
 var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
+var chaiAsPromised = require('chai-as-promised');  // Lets you use .eventually
 //chai.use('sinon-chai');
 chai.use(chaiAsPromised);
 

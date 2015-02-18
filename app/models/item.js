@@ -22,5 +22,5 @@ module.exports = mongoose.model('Item', {
     // Doc on creating a DB and collection:
     // http://docs.mongodb.org/manual/tutorial/getting-started/
     // http://stackoverflow.com/questions/11117854/many-to-many-mapping-with-mongoose
-    // http://thecodebarbarian.wordpress.com/2013/06/06/61/     ***
+    // http://thecodebarbarian.wordpress.com/2013/06/06/61/     ***  Best tutorial
     // 

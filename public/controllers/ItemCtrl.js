@@ -8,6 +8,7 @@ app.controller('ItemController', function($scope, itemService) {
       .then(function(data) {
           // promise fulfilled
           if (data) {
+            //  Start using lodash instead of underscore.js
             var rocks = _.where(data, {size: 'Rock'});
             var pebbles = _.where(data, {size: 'Pebble'});
             var sand = _.where(data, {size: 'Sand'});
@@ -21,7 +22,7 @@ app.controller('ItemController', function($scope, itemService) {
           $scope.newOne = '';
       }, function(err) {
         console.log (' Error in get All');
-        console.log(err); // Error: "It broke"
+        console.log(err); // Error
       });
       // Add some error handling here.
   }
@@ -51,6 +52,9 @@ app.controller('ItemController', function($scope, itemService) {
   $scope.update = function (id, data) {
     console.log ('request to update: ' + id);
     console.log (data);
+    // Use angular.copy helper method below to create a deep copy of the
+    //   data item before updating, we are going to remove the
+    //   row version and a couple other properties from it first.
     itemService.update (id, angular.copy(data))
       .then(function(data) {
         console.log ('Update completed');

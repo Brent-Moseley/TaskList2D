@@ -1,6 +1,8 @@
  // app/routes.js
 
  // good doc:  https://www.packtpub.com/books/content/understanding-express-routes
+ // This is the routes for the Express middleware, on the back end.  Everything in app
+ // is the Express / Mongo / Node backend.  Everything in public is the Angular front end.
 var Item = require('./models/item');
 
     module.exports = function(app) {

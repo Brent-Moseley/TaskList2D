@@ -1,6 +1,8 @@
-// public/js/services/NerdService.js
+// public/js/services/ItemService.js
 app.factory('itemService', ['$http', function($http, $q) {
-
+    // the $q service gives you promises in an Angular app:  
+    //   https://docs.angularjs.org/api/ng/service/$q
+    //   Promises are just another way to do callbacks, via chaining.
     return {
       // call to get all items
       get : function() {

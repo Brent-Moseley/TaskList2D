@@ -2,15 +2,15 @@
 //  First make sure Selenium web driver is started:  webdriver-manager start
 // To run this test, go to the TaskList2D/test/e2e folder and then run: protractor conf.js 
 
-var helpers = require('../test-helper');
-var expect = helpers.expect;
-var ItemsPage = require('./pages/items-page');
+var helpers = require('../test-helper');   // include the test helper
+var expect = helpers.expect;              // connects to chai.expect
+var ItemsPage = require('./pages/items-page');  // require the test page
 
 describe('creating items', function() {
   beforeEach(function() {
     // this creates a test "page" with just the elements we want to test.
     this.page = new ItemsPage();
-    this.page.get();
+    this.page.get();   // invoke the browser
   });
 
   it('should create a new item', function() {
@@ -23,17 +23,31 @@ describe('creating items', function() {
     this.page.itemCreateNameField.sendKeys('Tester Adding');
     this.page.itemCreateSubmit.click();
     expect(this.page.lastItem.getText()).to.eventually.contain('Tester Adding');
+    this.page.size.click();                              // Click the size down down
+    element.all(by.cssContainingText('option', 'Sand')).last().click();  // ... and click 'Sand'
+    this.page.status.click();                                            // Click status drop down
+    element.all(by.cssContainingText('option', 'Started')).last().click();  // ... and click 'Started'
+  });
+
+  it ('should contain the new item', function () {
+    expect(this.page.lastItem.getText()).to.eventually.contain('Tester Adding');
+    expect(this.page.lastCol.getText()).to.eventually.contain('X');
+
+  });
+
+  it ('should have size == rock and status == started', function () {
+    var allText = this.page.lastItem.getText();
+    expect(allText).to.eventually.contain('Sand');
+    expect(allText).to.eventually.contain('Started');
   });
 
   it('should remove the new item', function() {
-    // Still contains the added row, and contains a remove button
-    // Not sure if we have to do eventually on this next one, or if it always begins as true
-    expect(this.page.lastItem.getText()).to.eventually.contain('Tester Adding');
-    expect(this.page.lastCol.getText()).to.eventually.contain('X');
-    expect(this.page.lastCol.click());
+    // Still contains the added row when loaded this second time, and contains a remove button
+    expect(this.page.lastCol.click());    // Click the remove button without errors
   });  
+   
   it('should not find the new item', function() {
-    // And after deletion, no longer contains the new item
+    // And after deletion, no longer contains the new item, eventually used for page load
     expect(this.page.lastItem.getText()).to.eventually.not.contain('Tester Adding');
   });    
 });

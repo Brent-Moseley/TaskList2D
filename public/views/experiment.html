@@ -1,0 +1,40 @@
+<!-- public/views/experiment.html 
+   Hit this route:  http://localhost:8080/#/experiment    -->
+
+<div class="panel content large-8 medium-10 small-12 small-centered large-centered radius" 
+     style="padding: 0.75rem;">
+  <h5>Experiment 1</h5>
+
+  <div ng-controller="catalogController">
+    <form ng-submit="registerCourse(course)">
+      (catalog controller)<br>
+      You can pick from:<br>
+      <ol>
+        <li ng-repeat="class in catalog">
+          {{class.name}}
+        </li>
+      </ol>      
+      Add a New Class:
+      <input type="text" ng-model="course" />
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <div ng-controller="scheduleController">
+    (schedule controller)<br>
+    Your classes:
+    <ul>
+      <li ng-repeat="class in schedule">
+        Registered for: {{class.name}}
+      </li>
+    </ul>
+
+  </div>
+
+  <div ng-controller="summaryController">
+    (summary controller)<br>
+    {{summary}}
+
+  </div>  
+
+</div>

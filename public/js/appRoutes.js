@@ -9,6 +9,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: 'MainController'
     })
 
+    .when('/experiment', {
+        templateUrl: 'views/experiment.html',
+        controller: 'MainController'
+    })
     // items page that will use the ItemController
     .when('/items', {
         templateUrl: 'views/item.html',

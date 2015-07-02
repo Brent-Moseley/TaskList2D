@@ -5,6 +5,7 @@
      style="padding: 0.75rem;">
   <h5>Experiment 1</h5>
 
+  <!-- Displays a catalog of courses person can take -->
   <div ng-controller="catalogController">
     <form ng-submit="registerCourse(course)">
       (catalog controller)<br>
@@ -20,6 +21,7 @@
     </form>
   </div>
 
+  <!-- Shows the classes a person is scheduled for -->
   <div ng-controller="scheduleController">
     (schedule controller)<br>
     Your classes:
@@ -31,9 +33,10 @@
 
   </div>
 
+  <!-- Shows a summary of classes taken -->
   <div ng-controller="summaryController">
     (summary controller)<br>
-    {{summary}}
+    <span ng-repeat="(key, value) in summary">{{value}}</span>
 
   </div>  
 

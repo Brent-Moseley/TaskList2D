@@ -7,7 +7,12 @@ app.controller('MainController', function($scope) {
 
 
 //  Documentation on providers:  https://docs.angularjs.org/guide/providers
+
+
 //  EXAMPLE OF COMMUNICATING BETWEEN CONTROLLERS USING SERVICES
+//
+//  In a more extensive example, the services and controllers would be in their own files,
+//  organized in folders by feature.
 
 // Create a very simple service to simulate the user's schedule, can be "edited"
 app.value ('schedule', [
@@ -16,7 +21,7 @@ app.value ('schedule', [
   {id: 3, name: "Econ 101"}
 ]);
 
-// Simple service to hold the summary text, seems to need
+// Simple service to hold the summary text.
 app.value ('summaryText', {text: 'None'});
 
 // Create a constant for the list of class options, this is created during the configuration phase and does not change
@@ -33,7 +38,6 @@ app.factory('registration', function (schedule) {
   return {
     registerCourse: function (course) {
       schedule.push({id: 10, name: course});
-
     }
   }
 });
@@ -43,7 +47,6 @@ app.factory('notifier', function () {
   return {
     notifyCourseRegistration: function (course) {
       console.log ('You have been registered for:' + course)
-      
     }
   }
 });
@@ -64,12 +67,15 @@ app.controller('catalogController', function ($scope, registration, notifier, ca
   $scope.registerCourse = function (course) {
     // When the user clicks 'Add' (or enter to submit the form), add the course they entered into the
     // input box. Note the de-coupling of responsibilities and separation of concerns below. 
+    // The catalog controller does not need to know any of the logic for how to actually register a course,
+    // do a notification, or set the details.  The services have that responsibility.  The controller just
+    // has to know what to ask for when the user wants to register a course.
     registration.registerCourse(course);   // Ask the registration service to register the course
     notifier.notifyCourseRegistration(course);  // Ask the notifier to send out a notification
     summarizer.setDetails();                    // Ask the summarizer to generate new summary text. 
   }
   $scope.catalog = catalog;   // Set a reference to the catalog array on the controller's scope.
-  summarizer.setDetails();
+  summarizer.setDetails();    // Create the summary details on page load
 });
 
 // The schedule controller is for the section of the page showing the user's schedule.
@@ -82,6 +88,5 @@ app.controller('scheduleController', function($scope, schedule) {
 
 // The summary controller is for the summary section of the page. 
 app.controller('summaryController', function($scope, summaryText) {
-  console.log ('Summary text:' + summaryText);
   $scope.summary = summaryText;
 });

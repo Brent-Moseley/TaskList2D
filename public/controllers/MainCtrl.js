@@ -90,3 +90,4 @@ app.controller('scheduleController', function($scope, schedule) {
 app.controller('summaryController', function($scope, summaryText) {
   $scope.summary = summaryText;
 });
+

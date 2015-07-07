@@ -12,7 +12,7 @@ app.controller('MainController', function($scope) {
 //  EXAMPLE OF COMMUNICATING BETWEEN CONTROLLERS USING SERVICES
 //
 //  In a more extensive example, the services and controllers would be in their own files,
-//  organized in folders by feature.
+//  organized in folders by feature. This is just a simple demo.
 
 // Create a very simple service to simulate the user's schedule, can be "edited"
 app.value ('schedule', [
